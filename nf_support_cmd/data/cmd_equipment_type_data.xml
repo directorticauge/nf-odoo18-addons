@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Tipos iniciales cargados en la instalación (no se sobreescriben al actualizar) -->
+        <record id="type_nevera_star" model="nf.cmd.equipment.type">
+            <field name="name">Nevera Star</field>
+            <field name="sequence">10</field>
+        </record>
+        <record id="type_termonevera" model="nf.cmd.equipment.type">
+            <field name="name">Termonevera</field>
+            <field name="sequence">20</field>
+        </record>
+        <record id="type_cuarto_frio" model="nf.cmd.equipment.type">
+            <field name="name">Cuarto Frío</field>
+            <field name="sequence">30</field>
+        </record>
+        <record id="type_dispensador" model="nf.cmd.equipment.type">
+            <field name="name">Dispensador</field>
+            <field name="sequence">40</field>
+        </record>
+        <record id="type_congelador" model="nf.cmd.equipment.type">
+            <field name="name">Congelador</field>
+            <field name="sequence">50</field>
+        </record>
+        <record id="type_nevera_mexicana" model="nf.cmd.equipment.type">
+            <field name="name">Nevera Mexicana</field>
+            <field name="sequence">60</field>
+        </record>
+        <record id="type_otro" model="nf.cmd.equipment.type">
+            <field name="name">Otro</field>
+            <field name="sequence">99</field>
+        </record>
+    </data>
+</odoo>

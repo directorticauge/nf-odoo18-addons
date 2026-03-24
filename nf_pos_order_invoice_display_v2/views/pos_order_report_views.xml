@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_report_pos_order_search_inherit" model="ir.ui.view">
+            <field name="name">nf_pos_order_invoice_display_v2.report.pos.order.search.inherit</field>
+            <field name="model">report.pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_report_pos_order_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='product_category']" position="after">
+                    <filter name="account_move" context="{'group_by':'account_move'}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90" width="90" height="90">
+  <!-- Fondo redondeado morado Odoo -->
+  <rect width="90" height="90" rx="16" ry="16" fill="#875A7B"/>
+
+  <!-- Cuerpo del equipo (nevera/dispensador) -->
+  <rect x="22" y="14" width="46" height="62" rx="5" ry="5" fill="#ffffff" opacity="0.95"/>
+
+  <!-- Línea divisoria congelador / nevera -->
+  <rect x="22" y="38" width="46" height="3" fill="#875A7B" opacity="0.5"/>
+
+  <!-- Manija superior (congelador) -->
+  <rect x="34" y="20" width="12" height="4" rx="2" fill="#875A7B" opacity="0.7"/>
+
+  <!-- Manija inferior (nevera) -->
+  <rect x="34" y="50" width="12" height="4" rx="2" fill="#875A7B" opacity="0.7"/>
+
+  <!-- Bisagra izquierda -->
+  <rect x="20" y="22" width="4" height="6" rx="1" fill="#c8a0c0"/>
+  <rect x="20" y="52" width="4" height="6" rx="1" fill="#c8a0c0"/>
+
+  <!-- Pequeño LED / indicador -->
+  <circle cx="59" cy="22" r="2.5" fill="#4CAF50"/>
+
+  <!-- Termómetro minimalista en el centro -->
+  <line x1="45" y1="57" x2="45" y2="70" stroke="#875A7B" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="45" cy="72" r="3" fill="#875A7B"/>
+  <line x1="40" y1="60" x2="43" y2="60" stroke="#875A7B" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="40" y1="64" x2="43" y2="64" stroke="#875A7B" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="40" y1="68" x2="43" y2="68" stroke="#875A7B" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Detalles de hielo en parte superior -->
+  <text x="45" y="35" text-anchor="middle" font-size="11" fill="#875A7B" font-family="Arial" font-weight="bold">❄</text>
+</svg>
