@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_nf_cmd_equipment_type_user,nf.cmd.equipment.type (usuario - solo lectura),model_nf_cmd_equipment_type,nf_support_cmd.group_cmd_user,1,0,0,0
+access_nf_cmd_equipment_type_manager,nf.cmd.equipment.type (gestor),model_nf_cmd_equipment_type,nf_support_cmd.group_cmd_manager,1,1,1,1
+access_nf_cmd_equipment_user,nf.cmd.equipment (usuario),model_nf_cmd_equipment,nf_support_cmd.group_cmd_user,1,1,1,1
+access_nf_cmd_assignment_user,nf.cmd.assignment (usuario),model_nf_cmd_assignment,nf_support_cmd.group_cmd_user,1,1,1,1
+access_nf_cmd_service_user,nf.cmd.service (usuario),model_nf_cmd_service,nf_support_cmd.group_cmd_user,1,1,1,1
+access_nf_cmd_report_wizard_user,nf.cmd.report.wizard (usuario),model_nf_cmd_report_wizard,nf_support_cmd.group_cmd_user,1,1,1,1

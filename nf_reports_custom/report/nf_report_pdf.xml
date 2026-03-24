@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- ==================== PAPER FORMAT ==================== -->
+        <record id="paperformat_nf_report_landscape" model="report.paperformat">
+            <field name="name">NF Reporte A4 Horizontal</field>
+            <field name="format">A4</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">40</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">10</field>
+            <field name="margin_right">10</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">40</field>
+            <field name="dpi">90</field>
+            <field name="disable_shrinking" eval="False"/>
+        </record>
+
+        <!-- ==================== REPORT ACTION ==================== -->
+        <record id="action_report_nf_wizard_pdf" model="ir.actions.report">
+            <field name="name">Reporte NF PDF</field>
+            <field name="model">nf.report.wizard</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">nf_reports_custom.report_nf_wizard_pdf</field>
+            <field name="report_file">nf_reports_custom.report_nf_wizard_pdf</field>
+            <field name="paperformat_id" ref="nf_reports_custom.paperformat_nf_report_landscape"/>
+        </record>
+
+        <!-- ==================== QWEB TEMPLATE ==================== -->
+        <template id="report_nf_wizard_pdf">
+            <t t-call="web.html_container">
+                <t t-foreach="reports" t-as="report">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <style>
+                                @page { size: A4 landscape; margin: 15mm 10mm 10mm 10mm; }
+                                .nf-pdf-table { table-layout: auto; width: 100%; border-collapse: collapse; font-size: 10px; }
+                                .nf-pdf-table th { padding: 4px 6px; text-align: left; word-break: break-word; }
+                                .nf-pdf-table td { padding: 3px 6px; border: 1px solid #dee2e6; word-break: break-word; }
+                            </style>
+                            <div class="row mb-3">
+                                <div class="col-12">
+                                    <h3 t-esc="report['report_name']"/>
+                                    <p style="font-size:12px; color:#555;">
+                                        Total filas:
+                                        <strong><t t-esc="report['total_rows']"/></strong>
+                                        &#160;|&#160;
+                                        Tiempo de ejecución:
+                                        <strong><t t-esc="report['execution_time']"/>s</strong>
+                                    </p>
+                                </div>
+                            </div>
+                            <table class="nf-pdf-table">
+                                <thead>
+                                    <tr style="background-color:#875A7B; color:white;">
+                                        <th t-foreach="report['cols']" t-as="col">
+                                            <t t-esc="col"/>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="report['rows']" t-as="row"
+                                        t-attf-style="background-color: #{'' if row_index % 2 == 0 else '#f5f7fa'};">
+                                        <td t-foreach="row" t-as="cell">
+                                            <t t-esc="cell if cell is not None else ''"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

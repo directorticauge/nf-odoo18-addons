@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- ==================== FORM VIEW - VIEWER ==================== -->
+        <record id="view_nf_intelligence_viewer_form" model="ir.ui.view">
+            <field name="name">nf.intelligence.viewer.form</field>
+            <field name="model">nf.intelligence.viewer</field>
+            <field name="arch" type="xml">
+                <form string="Dashboard" create="false" delete="false" duplicate="false">
+                    <header>
+                        <button name="action_render"
+                                type="object"
+                                string="↺ Actualizar datos"
+                                class="btn-secondary"/>
+                    </header>
+                    <sheet>
+                        <div style="display:flex;gap:16px;align-items:center;
+                                    margin-bottom:8px;flex-wrap:wrap;">
+                            <span style="font-size:12px;color:#888;">
+                                Dashboard:
+                                <b><field name="dashboard_id" nolabel="1" readonly="1"
+                                          style="display:inline;"/></b>
+                            </span>
+                            <span style="font-size:12px;color:#bbb;">
+                                Actualizado:
+                                <field name="last_rendered" nolabel="1" readonly="1"
+                                       style="display:inline;color:#bbb;font-size:12px;"/>
+                            </span>
+                        </div>
+                        <field name="result_html"
+                               nolabel="1"
+                               readonly="1"
+                               widget="html"
+                               sanitize="0"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- ==================== LIST VIEW ==================== -->
+        <record id="view_cmd_equipment_list" model="ir.ui.view">
+            <field name="name">nf.cmd.equipment.list</field>
+            <field name="model">nf.cmd.equipment</field>
+            <field name="arch" type="xml">
+                <list string="Equipos en Comodato"
+                      decoration-success="state == 'available'"
+                      decoration-info="state == 'assigned'"
+                      decoration-warning="state == 'maintenance'"
+                      decoration-danger="state == 'lost'"
+                      decoration-muted="state == 'retired'">
+                    <field name="sequence_number" string="N°"/>
+                    <field name="equipment_type_id" string="Tipo"/>
+                    <field name="brand" string="Marca" optional="show"/>
+                    <field name="model_ref" string="Modelo / N.C." optional="show"/>
+                    <field name="capacity" string="Capacidad" optional="show"/>
+                    <field name="state" string="Estado" widget="badge"/>
+                    <field name="current_commercial_name" string="Nombre Comercial"/>
+                    <field name="current_partner_id" string="Cliente" optional="show"/>
+                    <field name="current_route" string="Ruta" optional="show"/>
+                    <field name="current_city" string="Ciudad" optional="show"/>
+                    <field name="delivery_date" string="F. Entrega" optional="show"/>
+                    <field name="days_assigned" string="Días" optional="show"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- ==================== FORM VIEW ==================== -->
+        <record id="view_cmd_equipment_form" model="ir.ui.view">
+            <field name="name">nf.cmd.equipment.form</field>
+            <field name="model">nf.cmd.equipment</field>
+            <field name="arch" type="xml">
+                <form string="Equipo de Comodato">
+                    <header>
+                        <button name="action_assign"
+                                type="object"
+                                string="Asignar a Cliente"
+                                class="btn-primary"
+                                invisible="state not in ('available', 'maintenance')"/>
+                        <button name="action_return_equipment"
+                                type="object"
+                                string="Registrar Devolución"
+                                class="btn-warning"
+                                invisible="state != 'assigned'"
+                                confirm="¿Confirma la devolución del equipo?"/>
+                        <button name="action_set_maintenance"
+                                type="object"
+                                string="Pasar a Mantenimiento"
+                                class="btn-secondary"
+                                invisible="state != 'available'"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="available,assigned,maintenance,lost"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_assignments"
+                                    type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-handshake-o">
+                                <field name="assignment_count"
+                                       string="Asignaciones"
+                                       widget="statinfo"/>
+                            </button>
+                            <button name="action_view_services"
+                                    type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-wrench">
+                                <field name="service_count"
+                                       string="Servicios"
+                                       widget="statinfo"/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="sequence_number" string="Equipo N°"/>
+                            <h1>
+                                <field name="sequence_number"/>
+                                <span style="font-size:0.7em; color:#875A7B; margin-left:8px;">
+                                    <field name="equipment_type_id" readonly="1"/>
+                                </span>
+                            </h1>
+                        </div>
+
+                        <group>
+                            <group string="Identificación">
+                                <field name="equipment_type_id"/>
+                                <field name="brand"/>
+                                <field name="model_ref" string="Modelo / N.C."/>
+                                <field name="serial_number"/>
+                            </group>
+                            <group string="Características">
+                                <field name="capacity"/>
+                                <field name="liters"/>
+                                <field name="purchase_date"/>
+                            </group>
+                        </group>
+
+                        <!-- Asignación Activa -->
+                        <group string="Asignación Actual" invisible="state != 'assigned'">
+                            <group>
+                                <field name="current_partner_id" string="Cliente"/>
+                                <field name="current_commercial_name" string="Nombre Comercial"/>
+                            </group>
+                            <group>
+                                <field name="current_route" string="Ruta"/>
+                                <field name="current_city" string="Ciudad"/>
+                                <field name="delivery_date" string="Fecha de Entrega"/>
+                                <field name="days_assigned" string="Días Asignado"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Historial de Asignaciones" name="assignments">
+                                <field name="assignment_ids" readonly="1">
+                                    <list decoration-success="state == 'active'"
+                                          decoration-muted="state != 'active'">
+                                        <field name="delivery_date" string="F. Entrega"/>
+                                        <field name="return_date" string="F. Devolución" optional="show"/>
+                                        <field name="commercial_name" string="Nombre Comercial"/>
+                                        <field name="partner_id" string="Cliente" optional="show"/>
+                                        <field name="nit_cc" string="NIT/C.C." optional="show"/>
+                                        <field name="route" string="Ruta"/>
+                                        <field name="city" string="Ciudad"/>
+                                        <field name="days_assigned" string="Días"/>
+                                        <field name="state" string="Estado" widget="badge"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Servicios" name="services">
+                                <field name="service_ids" readonly="1">
+                                    <list>
+                                        <field name="date" string="Fecha"/>
+                                        <field name="service_type" string="Tipo"/>
+                                        <field name="client_name" string="Lugar / Cliente"/>
+                                        <field name="worker" string="Técnico"/>
+                                        <field name="value" string="Valor"/>
+                                        <field name="notes" string="Obs." optional="show"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Notas" name="notes">
+                                <field name="notes" placeholder="Observaciones del equipo..."/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <chatter/>
+                </form>
+            </field>
+        </record>
+
+        <!-- ==================== KANBAN VIEW ==================== -->
+        <record id="view_cmd_equipment_kanban" model="ir.ui.view">
+            <field name="name">nf.cmd.equipment.kanban</field>
+            <field name="model">nf.cmd.equipment</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="state" class="o_kanban_small_column">
+                    <field name="state"/>
+                    <field name="equipment_type_id"/>
+                    <field name="sequence_number"/>
+                    <field name="brand"/>
+                    <field name="model_ref"/>
+                    <field name="capacity"/>
+                    <field name="current_commercial_name"/>
+                    <field name="current_city"/>
+                    <field name="delivery_date"/>
+                    <field name="days_assigned"/>
+                    <templates>
+                        <t t-name="card">
+                            <div class="d-flex align-items-center gap-2 mb-1">
+                                <strong style="color:#875A7B;">
+                                    <field name="equipment_type_id"/> #<field name="sequence_number"/>
+                                </strong>
+                            </div>
+                            <div t-if="record.brand.value or record.model_ref.value"
+                                 class="text-muted" style="font-size:11px;">
+                                <t t-esc="record.brand.value"/>
+                                <t t-if="record.model_ref.value"> — <t t-esc="record.model_ref.value"/></t>
+                            </div>
+                            <div t-if="record.capacity.value" style="font-size:11px;">
+                                Cap: <t t-esc="record.capacity.value"/>
+                            </div>
+                            <hr class="mt-1 mb-1"/>
+                            <div t-if="record.current_commercial_name.value">
+                                <i class="fa fa-user me-1" style="color:#875A7B;"/>
+                                <t t-esc="record.current_commercial_name.value"/>
+                            </div>
+                            <div t-if="record.current_city.value" class="text-muted" style="font-size:11px;">
+                                <i class="fa fa-map-marker me-1"/>
+                                <t t-esc="record.current_city.value"/>
+                            </div>
+                            <div t-if="record.delivery_date.value" class="text-muted" style="font-size:11px;">
+                                <i class="fa fa-calendar me-1"/>
+                                <t t-esc="record.delivery_date.value"/>
+                                <span t-if="record.days_assigned.value"
+                                      class="ms-1 badge"
+                                      style="background:#875A7B; color:white; font-size:10px;">
+                                    <t t-esc="record.days_assigned.value"/> días
+                                </span>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- ==================== SEARCH VIEW ==================== -->
+        <record id="view_cmd_equipment_search" model="ir.ui.view">
+            <field name="name">nf.cmd.equipment.search</field>
+            <field name="model">nf.cmd.equipment</field>
+            <field name="arch" type="xml">
+                <search string="Buscar Equipos">
+                    <field name="sequence_number" string="N° Equipo"/>
+                    <field name="equipment_type_id" string="Tipo de Equipo"/>
+                    <field name="brand" string="Marca"/>
+                    <field name="model_ref" string="Modelo / N.C."/>
+                    <field name="current_commercial_name" string="Nombre Comercial"/>
+                    <field name="current_partner_id" string="Cliente"/>
+                    <field name="current_city" string="Ciudad"/>
+                    <field name="current_route" string="Ruta"/>
+                    <separator/>
+                    <filter name="available" string="Disponibles en Patio"
+                            domain="[('state','=','available')]"/>
+                    <filter name="assigned" string="Asignados a Clientes"
+                            domain="[('state','=','assigned')]"/>
+                    <filter name="maintenance" string="En Mantenimiento"
+                            domain="[('state','=','maintenance')]"/>
+                    <filter name="lost" string="Por Localizar"
+                            domain="[('state','=','lost')]"/>
+                    <group expand="0" string="Agrupar por">
+                        <filter name="group_type" string="Tipo de Equipo"
+                                context="{'group_by': 'equipment_type_id'}"/>
+                        <filter name="group_state" string="Estado"
+                                context="{'group_by': 'state'}"/>
+                        <filter name="group_city" string="Ciudad"
+                                context="{'group_by': 'current_city'}"/>
+                        <filter name="group_route" string="Ruta"
+                                context="{'group_by': 'current_route'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- ==================== ACTIONS ==================== -->
+        <record id="action_cmd_equipment_all" model="ir.actions.act_window">
+            <field name="name">Todos los Equipos</field>
+            <field name="res_model">nf.cmd.equipment</field>
+            <field name="view_mode">list,kanban,form</field>
+            <field name="search_view_id" ref="view_cmd_equipment_search"/>
+            <field name="view_ids" eval="[
+                (5, 0, 0),
+                (0, 0, {'view_mode': 'list',   'view_id': ref('view_cmd_equipment_list')}),
+                (0, 0, {'view_mode': 'kanban', 'view_id': ref('view_cmd_equipment_kanban')}),
+                (0, 0, {'view_mode': 'form',   'view_id': ref('view_cmd_equipment_form')}),
+            ]"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Registra tu primer equipo en comodato
+                </p>
+            </field>
+        </record>
+
+        <record id="action_cmd_equipment_assigned" model="ir.actions.act_window">
+            <field name="name">Asignados a Clientes</field>
+            <field name="res_model">nf.cmd.equipment</field>
+            <field name="view_mode">list,kanban,form</field>
+            <field name="domain">[('state','=','assigned')]</field>
+            <field name="search_view_id" ref="view_cmd_equipment_search"/>
+            <field name="view_ids" eval="[
+                (5, 0, 0),
+                (0, 0, {'view_mode': 'list',   'view_id': ref('view_cmd_equipment_list')}),
+                (0, 0, {'view_mode': 'kanban', 'view_id': ref('view_cmd_equipment_kanban')}),
+                (0, 0, {'view_mode': 'form',   'view_id': ref('view_cmd_equipment_form')}),
+            ]"/>
+        </record>
+
+        <record id="action_cmd_equipment_available" model="ir.actions.act_window">
+            <field name="name">Disponibles en Patio</field>
+            <field name="res_model">nf.cmd.equipment</field>
+            <field name="view_mode">list,kanban,form</field>
+            <field name="domain">[('state','=','available')]</field>
+            <field name="search_view_id" ref="view_cmd_equipment_search"/>
+            <field name="view_ids" eval="[
+                (5, 0, 0),
+                (0, 0, {'view_mode': 'list',   'view_id': ref('view_cmd_equipment_list')}),
+                (0, 0, {'view_mode': 'kanban', 'view_id': ref('view_cmd_equipment_kanban')}),
+                (0, 0, {'view_mode': 'form',   'view_id': ref('view_cmd_equipment_form')}),
+            ]"/>
+        </record>
+
+    </data>
+</odoo>
