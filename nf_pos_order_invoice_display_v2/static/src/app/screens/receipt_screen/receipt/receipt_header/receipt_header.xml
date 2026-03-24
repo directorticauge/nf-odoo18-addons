@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-inherit="point_of_sale.ReceiptHeader" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[contains(@class,'cashier')]" position="after">
+            <div t-if="props.data.invoice_name" class="invoice_name">
+                <div>--------------------------------</div>
+                <div># Factura: <t t-esc="props.data.invoice_name"/></div>
+            </div>
+            <div t-if="props.data.invoice_cufe" class="invoice_cufe" style="word-wrap: break-word; word-break: break-all; white-space: normal; max-width: 100%;">
+                <div>CUFE:</div>
+                <div style="font-size: 9px;"><t t-esc="props.data.invoice_cufe"/></div>
+            </div>
+            <div t-if="props.data.invoice_qr" class="invoice_qr" style="text-align: center; margin-top: 10px;">
+                <img t-att-src="'data:image/png;base64,' + props.data.invoice_qr" style="max-width: 150px; height: auto;"/>
+            </div>
+        </xpath>
+    </t>
+</templates>

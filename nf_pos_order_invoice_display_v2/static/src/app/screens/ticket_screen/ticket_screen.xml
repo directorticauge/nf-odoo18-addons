@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-inherit="point_of_sale.TicketScreen" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[contains(@class,'orders')]//div[contains(@class,'header-row')]/div[3]" position="replace">
+            <div class="col wide p-2"># Invoice</div>
+        </xpath>
+        <xpath expr="//div[contains(@class,'orders')]//div[contains(@class,'order-row')]/div[3]" position="replace">
+            <div class="col wide p-2">
+                <div><t t-esc="getInvoiceName(order)"/></div>
+            </div>
+        </xpath>
+    </t>
+</templates>

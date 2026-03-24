@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb inherit: remove barcode from standard delivery slip -->
+        <template id="remove_barcode_report_picking" inherit_id="stock.report_picking">
+            <xpath expr="//div[@t-field='o.name' and @t-options]" position="replace">
+                <div>
+                    <strong>Entrega:</strong>
+                    <span t-esc="o.name"/>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>

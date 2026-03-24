@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- ==================== MENÚ PRINCIPAL (APP) ==================== -->
+        <menuitem id="menu_nf_cmd_root"
+                  name="NF Comodatos"
+                  sequence="85"
+                  web_icon="nf_support_cmd,static/description/icon.svg"/>
+
+        <!-- ==================== EQUIPOS ==================== -->
+        <menuitem id="menu_nf_cmd_equipos"
+                  name="Equipos"
+                  parent="menu_nf_cmd_root"
+                  sequence="10"/>
+
+        <menuitem id="menu_nf_cmd_equipment_all"
+                  name="Todos los Equipos"
+                  parent="menu_nf_cmd_equipos"
+                  action="action_cmd_equipment_all"
+                  sequence="10"/>
+
+        <menuitem id="menu_nf_cmd_equipment_assigned"
+                  name="Asignados a Clientes"
+                  parent="menu_nf_cmd_equipos"
+                  action="action_cmd_equipment_assigned"
+                  sequence="20"/>
+
+        <menuitem id="menu_nf_cmd_equipment_available"
+                  name="Disponibles en Patio"
+                  parent="menu_nf_cmd_equipos"
+                  action="action_cmd_equipment_available"
+                  sequence="30"/>
+
+        <!-- ==================== ASIGNACIONES ==================== -->
+        <menuitem id="menu_nf_cmd_asignaciones"
+                  name="Asignaciones"
+                  parent="menu_nf_cmd_root"
+                  sequence="20"/>
+
+        <menuitem id="menu_nf_cmd_assignment"
+                  name="Historial de Asignaciones"
+                  parent="menu_nf_cmd_asignaciones"
+                  action="action_cmd_assignment"
+                  sequence="10"/>
+
+        <!-- ==================== SERVICIOS ==================== -->
+        <menuitem id="menu_nf_cmd_servicios"
+                  name="Servicios"
+                  parent="menu_nf_cmd_root"
+                  sequence="30"/>
+
+        <menuitem id="menu_nf_cmd_service"
+                  name="Salidas de Servicio"
+                  parent="menu_nf_cmd_servicios"
+                  action="action_cmd_service"
+                  sequence="10"/>
+
+        <!-- ==================== REPORTES ==================== -->
+        <menuitem id="menu_nf_cmd_reportes"
+                  name="Reportes"
+                  parent="menu_nf_cmd_root"
+                  sequence="80"/>
+
+        <menuitem id="menu_nf_cmd_report_wizard"
+                  name="Generar Reportes PDF"
+                  parent="menu_nf_cmd_reportes"
+                  action="action_cmd_report_wizard"
+                  sequence="10"/>
+
+        <!-- ==================== CONFIGURACIÓN ==================== -->
+        <menuitem id="menu_nf_cmd_config"
+                  name="Configuración"
+                  parent="menu_nf_cmd_root"
+                  groups="nf_support_cmd.group_cmd_manager"
+                  sequence="90"/>
+
+        <menuitem id="menu_nf_cmd_equipment_types"
+                  name="Tipos de Equipo"
+                  parent="menu_nf_cmd_config"
+                  action="action_cmd_equipment_type"
+                  sequence="10"/>
+
+    </data>
+</odoo>
