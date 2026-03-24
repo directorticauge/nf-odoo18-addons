@@ -166,6 +166,14 @@ class NfCmdEquipment(models.Model):
         self.ensure_one()
         self.write({'state': 'maintenance'})
 
+    def action_set_lost(self):
+        self.ensure_one()
+        self.write({'state': 'lost'})
+
+    def action_set_available(self):
+        self.ensure_one()
+        self.write({'state': 'available'})
+
     def action_view_assignments(self):
         self.ensure_one()
         return {
