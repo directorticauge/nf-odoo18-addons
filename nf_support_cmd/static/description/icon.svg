@@ -1,34 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90" width="90" height="90">
-  <!-- Fondo redondeado morado Odoo -->
-  <rect width="90" height="90" rx="16" ry="16" fill="#875A7B"/>
+<svg width="100%" viewBox="0 0 400 410" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    
+  <mask id="imagine-text-gaps-qceg9f" maskUnits="userSpaceOnUse"><rect x="0" y="0" width="400" height="410" fill="white"/><rect x="74" y="180.32640075683594" width="36.589969635009766" height="64.84059143066406" fill="black" rx="2"/><rect x="174.95213317871094" y="149.56846618652344" width="20.09575653076172" height="29.879953384399414" fill="black" rx="2"/><rect x="274" y="180.32640075683594" width="36.589969635009766" height="64.84059143066406" fill="black" rx="2"/><rect x="160.212890625" y="160.17445373535156" width="80.97608947753906" height="71.65110778808594" fill="black" rx="2"/><rect x="118.08110046386719" y="268.3039245605469" width="163.8378143310547" height="38.96063232421875" fill="black" rx="2"/></mask></defs>
 
-  <!-- Cuerpo del equipo (nevera/dispensador) -->
-  <rect x="22" y="14" width="46" height="62" rx="5" ry="5" fill="#ffffff" opacity="0.95"/>
+  <!-- Fondo cuadrado redondeado (estilo app icon) -->
+  <rect x="0" y="0" width="400" height="400" rx="80" style="fill:rgb(17, 17, 17);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
 
-  <!-- Línea divisoria congelador / nevera -->
-  <rect x="22" y="38" width="46" height="3" fill="#875A7B" opacity="0.5"/>
+  <!-- Nube flat -->
+  <path d="M95,235 Q78,175 128,158 Q138,120 180,120 Q195,96 225,96 Q258,96 272,118 Q310,106 332,140 Q362,142 360,188 Q368,222 338,238 Z" stroke-width="2" style="fill:rgb(30, 30, 30);stroke:rgb(51, 51, 51);color:rgb(255, 255, 255);stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
 
-  <!-- Manija superior (congelador) -->
-  <rect x="34" y="20" width="12" height="4" rx="2" fill="#875A7B" opacity="0.7"/>
+  <!-- Línea divisora sutil interna de la nube -->
+  <path d="M130,238 Q160,218 200,215 Q240,212 338,238" fill="none" stroke="#2a2a2a" stroke-width="1" mask="url(#imagine-text-gaps-qceg9f)" style="fill:none;stroke:rgb(42, 42, 42);color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
 
-  <!-- Manija inferior (nevera) -->
-  <rect x="34" y="50" width="12" height="4" rx="2" fill="#875A7B" opacity="0.7"/>
+  <!-- Bracket izquierdo < -->
+  <text x="78" y="230" font-size="52" font-weight="700" font-family="monospace" style="fill:rgb(93, 202, 165);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:monospace;font-size:52px;font-weight:700;text-anchor:start;dominant-baseline:auto">&lt;</text>
 
-  <!-- Bisagra izquierda -->
-  <rect x="20" y="22" width="4" height="6" rx="1" fill="#c8a0c0"/>
-  <rect x="20" y="52" width="4" height="6" rx="1" fill="#c8a0c0"/>
+  <!-- Slash / -->
+  <text x="185" y="172" font-size="22" font-weight="400" font-family="monospace" text-anchor="middle" style="fill:rgb(175, 169, 236);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:monospace;font-size:22px;font-weight:400;text-anchor:middle;dominant-baseline:auto">/</text>
 
-  <!-- Pequeño LED / indicador -->
-  <circle cx="59" cy="22" r="2.5" fill="#4CAF50"/>
+  <!-- Bracket derecho > -->
+  <text x="278" y="230" font-size="52" font-weight="700" font-family="monospace" style="fill:rgb(133, 183, 235);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:monospace;font-size:52px;font-weight:700;text-anchor:start;dominant-baseline:auto">&gt;</text>
 
-  <!-- Termómetro minimalista en el centro -->
-  <line x1="45" y1="57" x2="45" y2="70" stroke="#875A7B" stroke-width="2.5" stroke-linecap="round"/>
-  <circle cx="45" cy="72" r="3" fill="#875A7B"/>
-  <line x1="40" y1="60" x2="43" y2="60" stroke="#875A7B" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="40" y1="64" x2="43" y2="64" stroke="#875A7B" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="40" y1="68" x2="43" y2="68" stroke="#875A7B" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Iniciales NF centradas -->
+  <text x="200" y="196" text-anchor="middle" dominant-baseline="central" font-size="54" font-weight="700" font-family="'Anthropic Sans', sans-serif" letter-spacing="-2" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, sans-serif;font-size:54px;font-weight:700;text-anchor:middle;dominant-baseline:central">NF</text>
 
-  <!-- Detalles de hielo en parte superior -->
-  <text x="45" y="35" text-anchor="middle" font-size="11" fill="#875A7B" font-family="Arial" font-weight="bold">❄</text>
+  <!-- Wordmark inferior -->
+  <text x="200" y="298" text-anchor="middle" font-size="28" font-weight="500" font-family="'Anthropic Sans', sans-serif" letter-spacing="2" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, sans-serif;font-size:28px;font-weight:500;text-anchor:middle;dominant-baseline:auto">
+    <tspan style="fill:rgb(133, 183, 235);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, sans-serif;font-size:28px;font-weight:500;text-anchor:middle;dominant-baseline:auto">dev</tspan><tspan dx="4" style="fill:rgb(93, 202, 165);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, sans-serif;font-size:28px;font-weight:500;text-anchor:middle;dominant-baseline:auto">·</tspan><tspan dx="4" style="fill:rgb(93, 202, 165);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, sans-serif;font-size:28px;font-weight:500;text-anchor:middle;dominant-baseline:auto">cloud</tspan>
+  </text>
+
+  <!-- Punto decorativo inferior -->
+  <circle cx="200" cy="338" r="4" style="fill:rgb(93, 202, 165);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
 </svg>
