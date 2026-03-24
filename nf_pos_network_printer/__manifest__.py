@@ -3,9 +3,12 @@
     "version": "18.0.1.0.0",
     "category": "Point of Sale",
     "summary": "Permite configurar impresoras de preparación de red en POS",
-    "author": "NF Soluciones",
+    "author": "Nestor Forero Salas",
     "website": "https://www.augesoluciones.com",
-    "license": "LGPL-3",
+    "license": "OPL-1",
+    "images": ["static/description/banner.png"],
+    "price": 14.99,
+    "currency": "USD",
     "depends": ["point_of_sale"],
     "data": [
         "models/pos_printer_views.xml"
@@ -16,5 +19,5 @@
         ]
     },
     "installable": True,
-    "application": False
+    "application": True,
 }

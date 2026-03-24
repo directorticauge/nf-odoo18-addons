@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_nf_intelligence_dashboard_user,nf.intelligence.dashboard (usuario),model_nf_intelligence_dashboard,nf_reports_custom.group_nf_report_user,1,0,0,0
+access_nf_intelligence_dashboard_manager,nf.intelligence.dashboard (admin),model_nf_intelligence_dashboard,base.group_system,1,1,1,1
+access_nf_intelligence_widget_user,nf.intelligence.widget (usuario),model_nf_intelligence_widget,nf_reports_custom.group_nf_report_user,1,0,0,0
+access_nf_intelligence_widget_manager,nf.intelligence.widget (admin),model_nf_intelligence_widget,base.group_system,1,1,1,1
+access_nf_intelligence_widget_filter_user,nf.intelligence.widget.filter (usuario),model_nf_intelligence_widget_filter,nf_reports_custom.group_nf_report_user,1,0,0,0
+access_nf_intelligence_widget_filter_manager,nf.intelligence.widget.filter (admin),model_nf_intelligence_widget_filter,base.group_system,1,1,1,1
+access_nf_intelligence_viewer_user,nf.intelligence.viewer,model_nf_intelligence_viewer,nf_reports_custom.group_nf_report_user,1,1,1,1
+access_nf_intelligence_widget_column_user,nf.intelligence.widget.column (usuario),model_nf_intelligence_widget_column,nf_reports_custom.group_nf_report_user,1,1,1,1
+access_nf_intelligence_widget_column_manager,nf.intelligence.widget.column (admin),model_nf_intelligence_widget_column,base.group_system,1,1,1,1
+access_nf_intelligence_widget_param_user,nf.intelligence.widget.param (usuario),model_nf_intelligence_widget_param,nf_reports_custom.group_nf_report_user,1,1,1,1
+access_nf_intelligence_widget_param_manager,nf.intelligence.widget.param (admin),model_nf_intelligence_widget_param,base.group_system,1,1,1,1

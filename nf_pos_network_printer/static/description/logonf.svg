@@ -1,0 +1,25 @@
+<svg width="100%" viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    
+  </defs>
+
+  <!-- Fondo -->
+  <rect x="40" y="20" width="600" height="300" rx="24" style="fill:rgb(18, 18, 30);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Nube -->
+  <path d="M195,185 Q178,130 222,115 Q228,85 265,87 Q278,65 310,66 Q342,65 360,88 Q394,78 415,108 Q442,110 440,148 Q450,178 425,190 Z" stroke-width="1.5" style="fill:rgb(26, 47, 74);stroke:rgb(55, 138, 221);color:rgb(255, 255, 255);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <!-- Brillo -->
+  <ellipse cx="270" cy="112" rx="26" ry="10" opacity="0.35" style="fill:rgb(24, 95, 165);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.35;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Iniciales NF dentro de la nube -->
+  <text x="318" y="158" text-anchor="middle" font-size="46" font-weight="700" font-family="'Anthropic Sans', sans-serif" letter-spacing="-2" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, sans-serif;font-size:46px;font-weight:700;text-anchor:middle;dominant-baseline:auto">NF</text>
+
+  <!-- Wordmark: devcloud — separado claramente debajo de la nube -->
+  <text x="340" y="240" text-anchor="middle" font-family="'Anthropic Sans', sans-serif" font-size="36" font-weight="500" letter-spacing="1" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, sans-serif;font-size:36px;font-weight:500;text-anchor:middle;dominant-baseline:auto">
+    <tspan style="fill:rgb(133, 183, 235);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, sans-serif;font-size:36px;font-weight:500;text-anchor:middle;dominant-baseline:auto">dev</tspan><tspan dx="3" dy="0" style="fill:rgb(29, 158, 117);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, sans-serif;font-size:36px;font-weight:500;text-anchor:middle;dominant-baseline:auto">·</tspan><tspan dx="3" style="fill:rgb(93, 202, 165);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, sans-serif;font-size:36px;font-weight:500;text-anchor:middle;dominant-baseline:auto">cloud</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="340" y="280" text-anchor="middle" font-size="11" font-family="'Anthropic Sans', sans-serif" letter-spacing="4" style="fill:rgb(136, 135, 128);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, sans-serif;font-size:11px;font-weight:400;text-anchor:middle;dominant-baseline:auto">INFRAESTRUCTURA EN LA NUBE</text>
+
+</svg>
