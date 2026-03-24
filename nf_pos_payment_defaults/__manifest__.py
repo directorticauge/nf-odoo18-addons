@@ -28,15 +28,18 @@
         
         Reemplaza las acciones automatizadas del servidor para mejor rendimiento.
     """,
-    'author': 'NF Soluciones',
+    'author': 'Nestor Forero Salas',
     'website': 'https://www.augesoluciones.com',
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
+    'images': ['static/description/banner.png'],
+    'price': 12.99,
+    'currency': 'USD',
     'depends': [
         'point_of_sale',
         'account',
     ],
     'data': [],
     'installable': True,
-    'application': False,
+    'application': True,
     'auto_install': False,
 }

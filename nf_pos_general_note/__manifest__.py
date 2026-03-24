@@ -29,8 +29,11 @@
             "nf_pos_general_note/static/src/app/store/*.js",
         ],
     },
-    'application': False,
+    'application': True,
     'installable': True,
     'auto_install': False,
     'license': 'OPL-1',
+    'price': 12.99,
+    'currency': 'USD',
+    'images': ['static/description/banner.png'],
 }

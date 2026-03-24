@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- ==================== FORM VIEW - REPORTE ==================== -->
+        <record id="view_nf_report_form" model="ir.ui.view">
+            <field name="name">nf.report.form</field>
+            <field name="model">nf.report</field>
+            <field name="arch" type="xml">
+                <form string="Reporte Personalizado">
+                    <header>
+                        <button name="action_run_report"
+                                type="object"
+                                string="▶ Ejecutar Reporte"
+                                class="btn-primary"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active"
+                                    type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-archive">
+                                <field name="active"
+                                       widget="boolean_button"
+                                       options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" string="Nombre del Reporte"/>
+                            <h1>
+                                <field name="name" placeholder="Nombre del reporte..."/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="category"/>
+                                <field name="sequence"/>
+                            </group>
+                            <group>
+                                <field name="description" placeholder="Descripción del reporte..."/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Consulta SQL" name="query">
+                                <div style="background:#f0f0f0; padding:6px 10px; border-radius:4px; margin-bottom:8px; font-size:12px; color:#555;">
+                                    <b>Uso de parametros en el SQL:</b>
+                                    Escriba el nombre del parametro entre corchetes en el SQL: [nombre_parametro].
+                                    Defina los parametros en la pestana "Parametros de Entrada".
+                                    Ejemplo: WHERE date_order::date BETWEEN [fecha_desde] AND [fecha_hasta]
+                                </div>
+                                <field name="query"
+                                       nolabel="1"
+                                       placeholder="SELECT ..."
+                                       style="font-family: 'Courier New', monospace; font-size: 13px; min-height: 280px; background: #1e1e2e; color: #cdd6f4; padding: 12px; border-radius: 6px;"/>
+                            </page>
+                            <page string="Parámetros de Entrada" name="params">
+                                <field name="param_ids"
+                                       context="{'default_report_id': id}"/>
+                            </page>
+                            <page string="Acceso" name="access">
+                                <div style="background:#fff8e1; padding:8px 12px; border-left:4px solid #f9a825; border-radius:4px; margin-bottom:12px; font-size:12px; color:#555;">
+                                    <b>Sin restricciones:</b> si ambas listas están vacías, todos los usuarios con rol “Usuario” pueden ejecutar el reporte.<br/>
+                                    <b>Con restricciones:</b> solo pueden ejecutarlo los usuarios o grupos aquí indicados (cualquiera de los dos da acceso).
+                                </div>
+                                <group>
+                                    <field name="group_ids" widget="many2many_tags"
+                                           options="{'no_create': True}"
+                                           placeholder="Agregar grupos..."/>
+                                    <field name="user_ids" widget="many2many_tags"
+                                           options="{'no_create': True}"
+                                           placeholder="Agregar usuarios específicos..."/>
+                                </group>
+                            </page>
+                            <page string="Notas" name="notes">
+                                <field name="note"
+                                       placeholder="Notas internas sobre este reporte..."/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- ==================== LIST VIEW - PARAM ==================== -->
+        <record id="view_nf_report_param_list" model="ir.ui.view">
+            <field name="name">nf.report.param.list</field>
+            <field name="model">nf.report.param</field>
+            <field name="arch" type="xml">
+                <list editable="bottom">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name" placeholder="fecha_desde"/>
+                    <field name="param_label" placeholder="Fecha Desde"/>
+                    <field name="hint" placeholder="Ej: 2026-01-01" optional="show"/>
+                    <field name="param_type"/>
+                    <field name="required"/>
+                    <field name="default_value" placeholder="Ej: first_of_month" optional="show"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- ==================== LIST VIEW - REPORTE ==================== -->
+        <record id="view_nf_report_list" model="ir.ui.view">
+            <field name="name">nf.report.list</field>
+            <field name="model">nf.report</field>
+            <field name="arch" type="xml">
+                <list string="Reportes Personalizados">
+                    <field name="sequence" widget="handle"/>                    <field name="is_favorite" widget="boolean_favorite" nolabel="1"/>                    <field name="name"/>
+                    <field name="category"/>
+                    <field name="description"/>
+                    <button name="action_run_report"
+                            type="object"
+                            string="▶ Ejecutar"
+                            class="btn-primary btn-sm"
+                            icon="fa-play"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- ==================== SEARCH VIEW - REPORTE ==================== -->
+        <record id="view_nf_report_search" model="ir.ui.view">
+            <field name="name">nf.report.search</field>
+            <field name="model">nf.report</field>
+            <field name="arch" type="xml">
+                <search string="Buscar Reportes">
+                    <field name="name" string="Nombre"/>
+                    <field name="category" string="Categoría"/>
+                    <separator/>
+                    <filter name="favorites" string="Favoritos"
+                            domain="[('is_favorite','=',True)]"/>
+                    <filter name="active" string="Activos" domain="[('active','=',True)]"/>
+                    <filter name="scheduled" string="Con envío automático"
+                            domain="[('schedule_active','=',True)]"/>
+                    <group expand="0" string="Agrupar por">
+                        <filter name="group_category"
+                                string="Categoría"
+                                context="{'group_by': 'category'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- ==================== ACTION - REPORTE (Administrador) ==================== -->
+        <record id="action_nf_report" model="ir.actions.act_window">
+            <field name="name">Gestionar Reportes</field>
+            <field name="res_model">nf.report</field>
+            <field name="view_mode">list,form</field>
+            <field name="search_view_id" ref="view_nf_report_search"/>
+            <field name="context">{'search_default_active': 1}</field>
+            <field name="view_ids" eval="[
+                (5, 0, 0),
+                (0, 0, {'view_mode': 'list', 'view_id': ref('view_nf_report_list')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('view_nf_report_form')}),
+            ]"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Crea tu primer reporte personalizado
+                </p>
+                <p>
+                    Define una consulta SQL y los parámetros de entrada que necesites
+                    (fechas, textos, números). Los resultados se muestran en pantalla
+                    y puedes exportarlos a CSV.
+                </p>
+            </field>
+        </record>
+
+        <!-- ==================== LIST VIEW USUARIO (solo leer/ejecutar) ==================== -->
+        <record id="view_nf_report_list_user" model="ir.ui.view">
+            <field name="name">nf.report.list.user</field>
+            <field name="model">nf.report</field>
+            <field name="arch" type="xml">
+                <list string="Mis Reportes" create="0" delete="0">
+                    <field name="name"/>
+                    <field name="category"/>
+                    <field name="description"/>
+                    <button name="action_run_report"
+                            type="object"
+                            string="&#9654; Ejecutar"
+                            class="btn-primary btn-sm"
+                            icon="fa-play"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- ==================== FORM VIEW USUARIO (solo leer/ejecutar) ==================== -->
+        <record id="view_nf_report_form_user" model="ir.ui.view">
+            <field name="name">nf.report.form.user</field>
+            <field name="model">nf.report</field>
+            <field name="arch" type="xml">
+                <form string="Reporte" create="false" delete="false" duplicate="false">
+                    <header>
+                        <button name="action_run_report"
+                                type="object"
+                                string="&#9654; Ejecutar Reporte"
+                                class="btn-primary"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" string="Reporte"/>
+                            <h1><field name="name" readonly="1"/></h1>
+                        </div>
+                        <group>
+                            <field name="category" readonly="1"/>
+                            <field name="description" readonly="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- ==================== ACTION - REPORTE (Usuario) ==================== -->
+        <record id="action_nf_report_user" model="ir.actions.act_window">
+            <field name="name">Mis Reportes</field>
+            <field name="res_model">nf.report</field>
+            <field name="view_mode">list,form</field>
+            <field name="search_view_id" ref="view_nf_report_search"/>
+            <field name="context">{'search_default_active': 1}</field>
+            <field name="view_ids" eval="[
+                (5, 0, 0),
+                (0, 0, {'view_mode': 'list', 'view_id': ref('view_nf_report_list_user')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('view_nf_report_form_user')}),
+            ]"/>
+        </record>
+
+    </data>
+</odoo>
