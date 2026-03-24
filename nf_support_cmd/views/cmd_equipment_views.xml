@@ -52,6 +52,18 @@
                                 string="Pasar a Mantenimiento"
                                 class="btn-secondary"
                                 invisible="state != 'available'"/>
+                        <button name="action_set_lost"
+                                type="object"
+                                string="Por Localizar"
+                                class="btn-danger"
+                                invisible="state in ('lost', 'retired')"
+                                confirm="¿Confirma que el equipo está por localizar?"/>
+                        <button name="action_set_available"
+                                type="object"
+                                string="Disponible en Patio"
+                                class="btn-success"
+                                invisible="state != 'lost'"
+                                confirm="¿Confirma que el equipo fue localizado y está disponible?"/>
                         <field name="state" widget="statusbar"
                                statusbar_visible="available,assigned,maintenance,lost"/>
                     </header>
