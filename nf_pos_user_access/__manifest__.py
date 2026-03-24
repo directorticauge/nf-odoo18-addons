@@ -32,9 +32,12 @@
         2. Selecciona los usuarios que pueden usar este POS
         3. Si dejas vacío, todos los usuarios con permiso de POS pueden acceder
     """,
-    'author': 'NF Soluciones',
+    'author': 'Nestor Forero Salas',
     'website': 'https://www.augesoluciones.com',
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
+    'images': ['static/description/banner.png'],
+    'price': 12.99,
+    'currency': 'USD',
     'depends': [
         'point_of_sale',
     ],
@@ -42,6 +45,6 @@
         'views/pos_config_views.xml',
     ],
     'installable': True,
-    'application': False,
+    'application': True,
     'auto_install': False,
 }

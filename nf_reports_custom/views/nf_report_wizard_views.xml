@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- ==================== LIST VIEW - WIZARD PARAM ==================== -->
+        <record id="view_nf_report_wizard_param_list" model="ir.ui.view">
+            <field name="name">nf.report.wizard.param.list</field>
+            <field name="model">nf.report.wizard.param</field>
+            <field name="arch" type="xml">
+                <list editable="bottom" create="false" delete="false">
+                    <field name="param_label" string="Parámetro" readonly="1"/>
+                    <field name="param_hint"  string="Ayuda" readonly="1"/>
+                    <field name="value_input" string="Valor"
+                           placeholder="Fecha: AAAA-MM-DD | Entero: 42 | Decimal: 3.14 | Booleano: 1/0"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- ==================== WIZARD FORM ==================== -->
+        <record id="view_nf_report_wizard_form" model="ir.ui.view">
+            <field name="name">nf.report.wizard.form</field>
+            <field name="model">nf.report.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Ejecutar Reporte">
+                    <sheet>
+                        <!-- Header del reporte -->
+                        <div style="background:#2c3e50; color:white; padding:10px 14px; border-radius:6px; margin-bottom:12px;">
+                            <h3 style="margin:0; font-size:16px;">
+                                📊 <field name="report_id" readonly="1" nolabel="1"
+                                          style="color:white; font-size:16px; display:inline;"/>
+                            </h3>
+                            <div style="font-size:12px; margin-top:4px; opacity:0.85;">
+                                <field name="report_description" readonly="1" nolabel="1"
+                                       style="color:white;"/>
+                            </div>
+                        </div>
+
+                        <!-- Parámetros de entrada -->
+                        <group string="Parámetros de Entrada" col="1"
+                               invisible="not param_line_ids">
+                            <field name="param_line_ids" nolabel="1"/>
+                        </group>
+
+                        <!-- Sin parámetros -->
+                        <div invisible="param_line_ids"
+                             style="background:#e8f4f8; padding:10px; border-radius:4px; color:#2980b9; font-size:13px; margin-bottom:10px;">
+                            ℹ Este reporte no requiere parámetros de entrada.
+                            Haga clic en <b>Ejecutar</b> para ver los resultados.
+                        </div>
+
+                        <!-- Botones -->
+                        <div style="margin: 12px 0; display:flex; gap:8px; flex-wrap:wrap;">
+                            <button name="action_execute"
+                                    type="object"
+                                    string="▶ Ejecutar"
+                                    class="btn-primary"/>
+                            <button name="action_validate_sql"
+                                    type="object"
+                                    string="✔ Validar SQL"
+                                    class="btn-secondary"/>
+                            <button name="action_export_csv"
+                                    type="object"
+                                    string="⬇ CSV"
+                                    class="btn-secondary"
+                                    invisible="not has_results"/>
+                            <button name="action_export_xlsx"
+                                    type="object"
+                                    string="⬇ Excel"
+                                    class="btn-secondary"
+                                    invisible="not has_results"/>
+                            <button name="action_export_pdf"
+                                    type="object"
+                                    string="⬇ PDF"
+                                    class="btn-secondary"
+                                    invisible="not has_results"/>
+                        </div>
+
+                        <!-- Indicador de resultados -->
+                        <div invisible="not has_results"
+                             style="background:#eafaf1; border:1px solid #a9dfbf; padding:6px 12px; border-radius:4px; font-size:12px; color:#196f3d; margin-bottom:8px;">
+                            &#9989; Consulta ejecutada en
+                            <b><field name="execution_time" nolabel="1" readonly="1"
+                                      style="display:inline; color:#196f3d;"/>s</b>
+                            &#160;|&#160; Total filas:
+                            <b><field name="total_rows" nolabel="1" readonly="1"
+                                      style="display:inline; color:#196f3d;"/></b>
+                            &#160;|&#160; P&#225;gina:
+                            <b><field name="current_page" nolabel="1" readonly="1"
+                                      style="display:inline; color:#196f3d;"/></b>
+                            /
+                            <b><field name="total_pages" nolabel="1" readonly="1"
+                                      style="display:inline; color:#196f3d;"/></b>
+                            <span invisible="not is_truncated" style="color:#c0392b;">
+                                &#160;(m&#225;x. 5000 filas en pantalla &#8212; use CSV/Excel para todo)
+                            </span>
+                        </div>
+
+                        <!-- Paginación -->
+                        <div invisible="not has_results"
+                             style="display:flex; gap:8px; margin-bottom:8px;">
+                            <button name="action_prev_page"
+                                    type="object"
+                                    string="&#9664; Anterior"
+                                    class="btn-secondary btn-sm"
+                                    invisible="current_page &lt;= 1"/>
+                            <button name="action_next_page"
+                                    type="object"
+                                    string="Siguiente &#9654;"
+                                    class="btn-secondary btn-sm"
+                                    invisible="current_page &gt;= total_pages"/>
+                        </div>
+
+                        <!-- Resultados HTML -->
+                        <div invisible="not has_results"
+                             style="border:1px solid #ddd; border-radius:6px; overflow:auto; max-height:420px;">
+                            <field name="result_html"
+                                   nolabel="1"
+                                   readonly="1"
+                                   widget="html"
+                                   sanitize="0"/>
+                        </div>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- ==================== ACTION WIZARD ==================== -->
+        <record id="action_nf_report_wizard" model="ir.actions.act_window">
+            <field name="name">Ejecutar Reporte</field>
+            <field name="res_model">nf.report.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

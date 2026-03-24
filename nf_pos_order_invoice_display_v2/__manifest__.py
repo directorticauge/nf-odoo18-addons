@@ -1,17 +1,19 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "NF Invoice number in POS Receipt (v2)",
-    'summary': """Displays the invoice number on the Point of Sale (POS) receipt, as well as in the Orders, Paid Orders, and Order Analytics views within the POS.""",
+    'name': "NF Número de Factura, CUFE y QR en Recibo POS (v2)",
+    'summary': """Muestra el número de factura, el CUFE y el código QR de la factura electrónica en el recibo del POS, así como en las vistas de Órdenes, Órdenes Pagadas y Análisis de Órdenes.""",
     'description': """
-    This module extends the Point of Sale (POS) functionality to display the invoice number associated with each order.
-    The invoice number is added to:
-        - The printed POS receipt.
-        - The POS order list view.
-        - The paid orders view within the POS.
-        - The POS order analysis report.
-    This allows for better traceability between POS orders and their respective invoices, facilitating accounting management and administrative control.
+    Este módulo extiende la funcionalidad del Punto de Venta (POS) para mostrar en el recibo
+    la información completa de la factura electrónica asociada a cada orden.
+    Se agrega a:
+        - El recibo impreso del POS: número de factura, CUFE y código QR de la factura electrónica.
+        - La vista de lista de órdenes del POS con filtro de búsqueda por número de factura.
+        - La vista de órdenes pagadas dentro del POS con filtro de búsqueda por número de factura.
+        - El reporte de análisis de órdenes del POS.
+    Esto permite una mejor trazabilidad entre las órdenes del POS y sus respectivas facturas electrónicas,
+    cumpliendo con los requisitos de la DIAN y facilitando la gestión contable y el control administrativo.
     """,
-    'author': "NF Soluciones",
+    'author': "Nestor Forero Salas",
     'website': 'https://www.augesoluciones.com',
     'category': 'point_of_sale',
     'version': '18.0.0.1',
@@ -29,8 +31,9 @@
         ],
     },
     'images': ['static/description/banner.png'],
+    'web_icon': 'nf_pos_order_invoice_display_v2,static/description/icon.svg',
     'application':True,
     'license': 'OPL-1',
     'currency': 'USD',
-    'price': 18.99
+    'price': 58.99
 }

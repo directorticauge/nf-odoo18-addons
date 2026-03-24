@@ -14,6 +14,10 @@
     ''',
     'author': 'Nestor Forero Salas',
     'website': 'https://www.augesoluciones.com',
+    'license': 'OPL-1',
+    'images': ['static/description/banner.png'],
+    'price': 34.99,
+    'currency': 'USD',
     'depends': ['base', 'mail'],
     'data': [
         'security/nf_cmd_groups.xml',
@@ -29,5 +33,4 @@
     ],
     'installable': True,
     'application': True,
-    'license': 'LGPL-3',
 }
